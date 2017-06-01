@@ -6,10 +6,10 @@ A knowledge center for all things our cohort. Following wiki.app criteria on [th
 
 ----
 ## Entity Relationship Diagram
+![ERD](./assets/erd.png)
 ![ERD](./assets/erd-2.png)
 
 **Notes on ERD**
-- A previous version of the erd is in the assets folder.
 - I'm planning my database schema ahead to include authors, categories, and tags in advance.
   - Tags are a reach, and the tags are their join table are set up that I can easily drop the concept if I don't like it.
 - I've specifically designed each table to hold just one concept. That means I'm not jamming a category into the article table, because categories are their own thing.
