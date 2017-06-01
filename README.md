@@ -15,14 +15,16 @@
 ----
 
 ## Stories
-_(I'm going to move these into Pivotal Tracker)_
 
-- **CHORE** - research and set up materialize-css.
-- **CHORE** - set up skelton for grid system (if grid is not includes in materialize)
-- **CHORE** - SET UP AUTHORS - Given that I am an admin, I want to seed data about authors (use classmate names) directly to the database.
-- **VIEW INDEX** - Given that I am a user, on '/' , I want to see a list of articles. This list should include the article subject, author, and created at date.
-- **CLICK ARTICLE ON INDEX** - Given that I am a user, on '/', When I click an article on the list, I want to be taken to that article.
-- **CREATE NEW ARTICLE** - Given that I am a user, on '/articles/new', I want to see a form that includes fields to create an article. I also want to see a dropdown for category, author, and select boxes(??) for tags. When I hit save, I want to be brought to the newly created article.
-- **VIEW ARTICLE SHOW** - Given that I am a user, on '/articles/:id', I want to see a layout that includes the article, all information related to that.
-- **EDIT ARTICLE SHOW** - Given that I am a user, on '/articles/:id/edit', I want to see all fields for new article filled in with the current data. However, author should be replaced with "contributor". When I hit save, I want to be brought back to the article show and see updated information.
-- **DELETE ARTICLE** - Given that I am a user, on '/articles/:id/edit', I want to see a delete button. When I click it, I want a "are you sure?" When I hit yes/okay, I want the article to be removed, and returned to the article index.
+- [Dev Stories on Pivotal Tracker Tracker](https://www.pivotaltracker.com/n/projects/2039931)
+
+----
+
+## Routes
+
+| Routes        | READ        | CREATE  | UPDATE | DESTROY|
+| ------------- |:-------------:| :----:| :----: | :-----: |
+| `/`      | Collection of all articles | Creates new article in collection, redirects to new article | **X** | **X** |
+| `/articles/:id `| Single article  | X | Edits part of article, redirects back to article | removes article from database, redirects to index |
+| `/articles/new `| Form for creating new article, on submit, POST('/') | **X** | **X** | **X**
+| `/articles/:id/edit `| Form for editing article, on submit, PATCH('/articles/:id') | **X** | **X** | **X**
