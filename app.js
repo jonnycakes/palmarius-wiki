@@ -29,6 +29,9 @@ app.use('/vendor/materialize', express.static(dir.materialize));
 // I MAY CHANGE THIS TO PUG!
 app.set('view engine', 'ejs');
 
+// Set up moments
+app.locals.moment = require('moment');
+
 // Set up body parser to parse request bodies
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());

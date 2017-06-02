@@ -14,7 +14,7 @@ const views = require('./viewController');
 router.get('/', controller.index, views.showAll);
 
 // VIEW (get) a sindle /article/id
-// router.get(('/:id(\\d+)/'), controller.show, views.showOne)
+router.get(('/:id(\\d+)/'), controller.show, controller.getEditors, views.showOne)
 
 //  CREATE (post) new article to the collection
 // router.post('/', controller.create, views.showOne);

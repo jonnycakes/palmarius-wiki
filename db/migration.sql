@@ -1,3 +1,5 @@
+-- RUN WITH COMMAND `psql -f migration.sql`
+
 -- Drop DB if exists
 DROP DATABASE IF EXISTS palmarius_wiki_db;
 
@@ -16,7 +18,8 @@ CREATE TABLE accounts (
   id BIGSERIAL PRIMARY KEY,
   first_name VARCHAR (128) NOT NULL,
   last_name VARCHAR (128) NOT NULL,
-  nickname VARCHAR (128)
+  nickname VARCHAR (128),
+  is_active BOOLEAN NOT NULL DEFAULT TRUE
 );
 
 CREATE TABLE categories (
