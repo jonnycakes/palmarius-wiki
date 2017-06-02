@@ -1,4 +1,8 @@
 {
+  "engines": {
+    "node": ">=7.9.0"
+  },
+  "engineStrict": true,
   "name": "palmarius-wiki",
   "version": "1.0.0",
   "description": "A knowledge base of the masterpiece cohort.",
@@ -25,5 +29,9 @@
     "morgan": "^1.8.2",
     "pg-promise": "^5.8.1",
     "pug": "^2.0.0-rc.1"
-  }
+  },
+"devDependencies": {
+  "eslint": "^3.19.0",
+  "eslint-config-airbnb-base": "^11.2.0",
+  "eslint-plugin-import": "^2.3.0"
 }
