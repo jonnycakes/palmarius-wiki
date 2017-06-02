@@ -3,9 +3,10 @@ const db = require('../config/db.js');
 module.exports = {
   findAll() {
     return db.many(`
-      SELECT articles.id AS id, articles.subject AS subject, articles.created_at AS created_at, accounts.first_name AS first_name, accounts.last_name AS last_name
+      SELECT articles.id AS id, articles.subject AS subject, articles.created_at AS created_at, accounts.first_name AS first_name, accounts.last_name AS last_name, cat.description
       FROM articles
-      LEFT OUTER JOIN accounts ON (articles.author_id = accounts.id)
+      INNER JOIN accounts ON (articles.author_id = accounts.id)
+      INNER JOIN categories cat ON (articles.category_id = cat.id)
       ORDER BY articles.id DESC
       `);
   },
@@ -26,7 +27,8 @@ module.exports = {
       LEFT OUTER JOIN accounts acc ON (join_table.contributor_id = acc.id)
       WHERE art.id = $1
     `, article_id);
-  }
+  },
+
 
 
 };
