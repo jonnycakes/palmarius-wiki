@@ -5,12 +5,12 @@ const express = require('express');
 
 const router = express.Router();
 
-
-router.use('/articles', require('./controllers/articles'));
-
-// redirect main path to /hotels
-router.get('/', (req, res) => {
-  res.redirect(301, '/articles');
+// redirect /articles back to the main url
+router.get('/articles', (req, res) => {
+  res.redirect(301, '/');
 });
+
+router.use('/', require('./controllers/articles'));
+
 
 module.exports = router;

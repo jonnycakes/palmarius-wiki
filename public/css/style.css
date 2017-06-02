@@ -1,0 +1,48 @@
+
+header {
+  background-color: #c62828 ;
+  color: #FFFFFF;
+  margin-top: 0;
+  padding-top: 0;
+}
+
+header .hamburger-menu {
+  visibility: visible;
+  float: right;
+  padding: 50px 35px 0 0;
+}
+
+header h1 {
+  margin-top: 0;
+  padding: 50px 0 10px 30px;
+}
+
+header p {
+  padding: 0 0 50px 30px;
+  font-style: italic;
+}
+
+/* h/t https://stackoverflow.com/questions/35961565/how-to-change-color-icon-in-materialize */
+i.icon-red {
+    color: #ffebee;
+}
+
+.side-nav img {
+  margin: 25px 75px;
+}
+
+
+#main-content {
+  padding: 10px 30px;
+}
+
+
+@media (min-width: 992px) {
+  header .hamburger-menu {
+    visibility: collapse;
+  }
+  header, #content-wrapper {
+    padding-left: 300px;
+  }
+
+}
