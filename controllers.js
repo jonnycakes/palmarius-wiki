@@ -12,5 +12,4 @@ router.get('/articles', (req, res) => {
 
 router.use('/', require('./controllers/articles'));
 
-
 module.exports = router;
