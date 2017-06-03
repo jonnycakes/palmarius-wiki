@@ -17,6 +17,10 @@ header h1 {
   padding: 50px 0 10px 30px;
 }
 
+header h3 {
+  padding: 30px;
+}
+
 header p {
   padding: 0 0 50px 30px;
   font-style: italic;

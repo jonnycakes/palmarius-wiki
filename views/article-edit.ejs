@@ -29,6 +29,12 @@
           <img src="/img/ga-logo.jpg" width="150px">
         </li>
 
+        <li>
+          <form method="POST" action="/<%= article.id %>?_method=delete">
+            <button class="btn-floating btn-large waves-effect waves-light red margin-top-20" style="margin-left:10px;"><i class="material-icons">delete</i></button>
+          </form>
+        </li>
+
       </ul>
 
     </div>
@@ -41,7 +47,8 @@
                  <div class="col s12">
                    <a href="/" class="breadcrumb">Home</a>
                    <a href="/" class="breadcrumb">Articles</a>
-                   <a class="breadcrumb"> New Article</a>
+                   <a href="/<%= article.id %>" class="breadcrumb"> <%= article.subject %> </a>
+                   <a class="breadcrumb"> Edit</a>
                  </div>
                </div>
              </nav>
@@ -49,7 +56,7 @@
 
 
 
-        <h3> Create New Article</h3>
+        <h3> Edit "<%= article.subject %>"</h3>
 
     </header>
 
@@ -57,31 +64,26 @@
 
       <div id="content-wrapper" class="container">
         <div id="main-content input-field">
-            <form class="col s12" method="POST" action="/">
+            <form class="col s12" method="POST" action="/<%= article.id %>?_method=put">
                 <label for="article[subject]">Subject:</label>
-                  <input id="article[subject]" name="article[subject]" type="text" class="validate">
+                  <input id="article[subject]" name="article[subject]" type="text" class="validate" value="<%= article.subject %>">
                   <br/>
                   <div class="input-field col s12">
-                    <textarea id="article[body]" name="article[body]" class="materialize-textarea"></textarea>
+                    <textarea id="article[body]" name="article[body]" class="materialize-textarea" ><%= article.subject %></textarea>
                     <label for="article[body]">Body (Markup Ready)</label>
                   </div>
                   <br/>
-                  <label for="article[author_id]">Author:</label>
-                  <select name="article[author_id]">
-                    <% authors.forEach( author => { %>
-                      <option value="<%= author.id %>"> <%= author.first_name %> <%= author.nickname %> <%= author.last_name %> </option>
+                  <label for="editor[contributor_id]">Editor:</label>
+                  <select name="editor[contributor_id]">
+                    <% editors.forEach( editor => { %>
+                      <option value="<%= editor.id %>"> <%= editor.first_name %> <%= editor.nickname %> <%= editor.last_name %> </option>
                     <% }) %>
                   </select>
 
                   <br/>
-                  <label for="article[category_id]">Category:</label>
-                  <select name="article[category_id]">
-                    <% categories.forEach( category => { %>
-                      <option value="<%= category.id %>"> <%= category.description %> </option>
-                    <% }) %>
-                  </select>
 
-                  <button type="submit" class="waves-effect waves-light btn green lighten-1">Create New Article</button>
+
+                  <button type="submit" class="waves-effect waves-light btn green lighten-1">Edit Article</button>
 
             </form>
         </div>

@@ -12,4 +12,22 @@ module.exports = {
     });
   },
 
+  formNew(req, res) {
+    res.render('article-create', {
+      categories: res.locals.categories,
+      authors: res.locals.accounts,
+    });
+  },
+
+  formEdit(req, res) {
+    res.render('article-edit', {
+      article: res.locals.article,
+      editors: res.locals.accounts,
+    });
+  },
+
+  destroyRedirect(req, res) {
+    res.redirect('/');
+  },
+
 };
