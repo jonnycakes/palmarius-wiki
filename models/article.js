@@ -13,9 +13,10 @@ module.exports = {
 
   findByArticle(article_id) {
     return db.one(`
-      SELECT *
-      FROM articles LEFT OUTER JOIN accounts ON (articles.author_id = accounts.id)
-      WHERE articles.id = $1
+      SELECT art.id AS article_id, art.author_id, art.subject, art.body, art.created_at, art.category_id, acc.id AS account_id, acc.first_name, acc.last_name
+      FROM articles art
+      INNER JOIN accounts acc ON (art.author_id = acc.id)
+      WHERE art.id = $1
       `, article_id);
   },
 
@@ -53,20 +54,20 @@ module.exports = {
   },
 
   create(article) {
-  return db.one(`
-     INSERT INTO articles (
-       author_id,
-       subject,
-       body,
-       category_id
-     ) VALUES (
-       $/author_id/,
-       $/subject/,
-       $/body/,
-       $/category_id/
-     )
-     RETURNING id
-   `, article);
+    return db.one(`
+       INSERT INTO articles (
+         author_id,
+         subject,
+         body,
+         category_id
+       ) VALUES (
+         $/author_id/,
+         $/subject/,
+         $/body/,
+         $/category_id/
+       )
+       RETURNING id
+     `, article);
    },
 
    findById(id) {
@@ -76,9 +77,18 @@ module.exports = {
        INNER JOIN categories cat ON (art.category_id = cat.id)
        WHERE art.id = $1
        `, id);
-     },
+    },
 
-   destroy(id) {
+   destroyArticleEdits(id) {
+    return db.none(`
+      DELETE
+      FROM article_contributors
+      WHERE article_id = $1;
+      `, id);
+    },
+
+
+  destroyArticle(id) {
     return db.none(`
       DELETE
       FROM articles
@@ -86,4 +96,25 @@ module.exports = {
       `, id);
   },
 
+  update(article, id) {
+    article.id = id;
+
+    return db.one(`
+      UPDATE articles
+      SET
+      subject = $/subject/,
+      body = $/body/
+      WHERE id = $/id/
+      RETURNING *
+      `, article);
+  },
+
+  createArticleEditor(contributor_id, article_id) {
+    return db.none(`
+      INSERT INTO article_contributors
+      (contributor_id, article_id)
+      VALUES
+      ($1, $2)
+      `, [contributor_id, article_id])
+  },
 };

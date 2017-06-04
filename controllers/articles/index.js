@@ -20,10 +20,10 @@ router.get(('/:id(\\d+)/'), controller.show, controller.getEditors, views.showOn
 router.post('/', controller.create);
 
 // UPDATE (patch) a specific /article/:id
-// router.put(('/:id(\\d+)/'), controller.update, views.showOne);
+router.put(('/:id(\\d+)/'), controller.update, controller.createArticleEditor, controller.getEditors, views.showOne);
 
 // DESTROY (delete) an /article/:id
-router.delete(('/:id(\\d+)/'), controller.destroy, views.destroyRedirect);
+router.delete(('/:id(\\d+)/'), controller.destroyArticleEdits, controller.destroyArticle, views.destroyRedirect);
 
 
 module.exports = router;

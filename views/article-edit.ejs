@@ -29,7 +29,8 @@
           <img src="/img/ga-logo.jpg" width="150px">
         </li>
 
-        <li>
+      </ul>
+      <ul class="foot">
           <form method="POST" action="/<%= article.id %>?_method=delete">
             <button class="btn-floating btn-large waves-effect waves-light red margin-top-20" style="margin-left:10px;"><i class="material-icons">delete</i></button>
           </form>
@@ -41,7 +42,7 @@
     <!-- End side-nav -->
 
     <header class="z-depth-1">
-      <!-- navigation -->
+      <!-- breadcrumb -->
               <nav>
                <div class="nav-wrapper">
                  <div class="col s12">
@@ -52,9 +53,11 @@
                  </div>
                </div>
              </nav>
-      <!-- End navigation -->
+      <!-- End breadcrumb -->
 
-
+      <span class="hamburger-menu">
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="large material-icons icon-red lighten-5">menu</i></a>
+      </span>
 
         <h3> Edit "<%= article.subject %>"</h3>
 
@@ -69,12 +72,12 @@
                   <input id="article[subject]" name="article[subject]" type="text" class="validate" value="<%= article.subject %>">
                   <br/>
                   <div class="input-field col s12">
-                    <textarea id="article[body]" name="article[body]" class="materialize-textarea" ><%= article.subject %></textarea>
+                    <textarea id="article[body]" name="article[body]" class="materialize-textarea" ><%= article.body %></textarea>
                     <label for="article[body]">Body (Markup Ready)</label>
                   </div>
                   <br/>
-                  <label for="editor[contributor_id]">Editor:</label>
-                  <select name="editor[contributor_id]">
+                  <label for="article[contributor_id]">Editor:</label>
+                  <select name="article[contributor_id]">
                     <% editors.forEach( editor => { %>
                       <option value="<%= editor.id %>"> <%= editor.first_name %> <%= editor.nickname %> <%= editor.last_name %> </option>
                     <% }) %>
