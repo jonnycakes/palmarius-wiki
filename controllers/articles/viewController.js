@@ -26,6 +26,10 @@ module.exports = {
     });
   },
 
+  updateRedirect(req, res) {
+    res.redirect(`/${req.params.id}`);
+  },
+
   destroyRedirect(req, res) {
     res.redirect('/');
   },

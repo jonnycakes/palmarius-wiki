@@ -27,6 +27,7 @@ module.exports = {
       LEFT OUTER JOIN article_contributors join_table ON (art.id = join_table.article_id)
       LEFT OUTER JOIN accounts acc ON (join_table.contributor_id = acc.id)
       WHERE art.id = $1
+      ORDER BY join_table.updated_at DESC
     `, article_id);
   },
 
@@ -117,4 +118,14 @@ module.exports = {
       ($1, $2)
       `, [contributor_id, article_id])
   },
+
+  findAllUpdates() {
+    return db.any(`
+      SELECT *
+      FROM articles art
+      LEFT OUTER JOIN article_contributors j_table ON (art.id = j_table.article_id)
+      LEFT OUTER JOIN accounts acc ON (j_table.contributor_id = acc.id)
+      ORDER BY j_table.updated_at DESC
+      `)
+  }
 };

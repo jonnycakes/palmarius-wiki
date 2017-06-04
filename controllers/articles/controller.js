@@ -91,8 +91,7 @@ module.exports = {
 
   update(req, res, next) {
     Articles.update(req.body.article, req.params.id)
-    .then((article) => {
-      res.locals.article = article;
+    .then( () => {;
       next();
     })
     .catch(err => next(err));
