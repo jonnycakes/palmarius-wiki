@@ -11,4 +11,8 @@ module.exports = {
     });
   },
 
+  formNew(req, res) {
+    res.render('category-create');
+  },
+
 };

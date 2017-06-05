@@ -17,4 +17,15 @@ module.exports = {
       WHERE cat.id = $1
       `, category_id);
   },
+
+  create(desc) {
+    return db.one(`
+       INSERT INTO categories (
+         description
+       ) VALUES (
+         $/description/
+       )
+       RETURNING categories.id
+     `, desc);
+   },
 };

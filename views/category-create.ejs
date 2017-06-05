@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ./partials/head.ejs %>
+  </head>
+  <body>
+
+    <!-- Start side-nav -->
+    <div id="slide-out" class="side-nav fixed">
+      <ul>
+        <%- include ./partials/logo.ejs %>
+
+        <li><a href="/categories" class="waves-effect waves-light btn blue lighten-1">Cancel Create</a></li>
+
+      </ul>
+
+    </div>
+    <!-- End side-nav -->
+
+    <header class="z-depth-1">
+      <!-- breadcrumb -->
+              <nav>
+               <div class="nav-wrapper">
+                 <div class="col s12">
+                   <a href="/" class="breadcrumb">Home</a>
+                   <a href="/categories" class="breadcrumb">Categories</a>
+                   <a class="breadcrumb"> New Category</a>
+                 </div>
+               </div>
+             </nav>
+      <!-- End breadcrumb -->
+
+      <span class="hamburger-menu">
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="large material-icons icon-red lighten-5">menu</i></a>
+      </span>
+
+        <h3> Create New Category</h3>
+
+    </header>
+
+
+
+      <div id="content-wrapper" class="container">
+        <div id="main-content input-field">
+            <form class="col s12" method="POST" action="/categories">
+              <div class="input-field col s12">
+                <input id="category[description]" name="category[description]" type="text" class="validate">
+                <label for="category[description]">Category Name</label>
+              </div>
+                  <button type="submit" class="waves-effect waves-light btn green lighten-1">Create New Category</button>
+
+            </form>
+        </div>
+      </div>
+
+
+
+
+
+  </body>
+</html>

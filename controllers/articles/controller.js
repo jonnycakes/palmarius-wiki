@@ -40,15 +40,6 @@ module.exports = {
     });
   },
 
-  getAllCategories(req, res, next) {
-    Articles.findAllCategories()
-    .then((categories) => {
-      res.locals.categories = categories;
-      next();
-    })
-    .catch(() => res.sendStatus(404));
-  },
-
   create(req, res, next) {
     console.log(req.body.article);
     Articles.create(req.body.article)

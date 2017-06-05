@@ -19,4 +19,13 @@ module.exports = {
     .catch(() => res.sendStatus(404));
   },
 
+  create(req, res, next) {
+    Categories.create(req.body.category)
+    .then((category) => {
+      console.log(category);
+      res.redirect(`/categories/${category.id}`);
+    })
+    .catch(err => next(err));
+  },
+
 };
