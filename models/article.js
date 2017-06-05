@@ -51,6 +51,7 @@ module.exports = {
     return db.many(`
       SELECT first_name, last_name, nickname, id
       FROM accounts
+      ORDER BY first_name
     `)
   },
 
