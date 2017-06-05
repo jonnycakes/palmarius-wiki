@@ -14,7 +14,7 @@
 
       </ul>
       <ul class="foot">
-        <li><a href="/new" class="waves-effect waves-light btn green lighten-1">New Article</a></li>
+        <li><a href="/categories" class="waves-effect waves-light btn green lighten-1">Category List</a></li>
               </ul>
     </div>
     <!-- End side-nav -->
@@ -27,6 +27,7 @@
           <div class="col s12">
             <a href="/" class="breadcrumb">Home</a>
             <a href="/categories" class="breadcrumb">Categories</a>
+
           </div>
         </div>
       </nav>
@@ -48,8 +49,8 @@
         <div id="main-content">
           <h3> Category List</h3>
             <div class="collection ">
-              <% categories.forEach( category => { %>
-                <a href="/categories/<%= category.id %>" class="collection-item red-text text-lighten-2"><%= category.description %></a>
+              <% results.forEach( article => { %>
+                <a href="/<%=article.id %>" class="collection-item red-text text-lighten-2"><span class="new badge red lighten-2" data-badge-caption=""><%= article.description %></span><span class="new badge red lighten-2" data-badge-caption=""><%= article.first_name %> <%= article.last_name %> - <%= moment(article.created_at).format('MMMM Do YYYY') %></span><%= article.subject %></a>
               <% }) %>
             </div>
         </div>

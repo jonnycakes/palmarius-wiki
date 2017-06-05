@@ -10,4 +10,13 @@ module.exports = {
     .catch(err => next(err));
   },
 
+  show(req, res, next) {
+    Categories.findByCategory(req.params.id)
+    .then((results) => {
+      res.locals.results = results;
+      next();
+    })
+    .catch(() => res.sendStatus(404));
+  },
+
 };

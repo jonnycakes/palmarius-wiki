@@ -8,4 +8,13 @@ module.exports = {
       ORDER BY categories.description
       `);
   },
+
+  findByCategory(category_id) {
+    return db.any(`
+      SELECT *
+      FROM categories cat
+      LEFT OUTER JOIN articles art ON (cat.id = art.category_id)
+      WHERE cat.id = $1
+      `, category_id);
+  },
 };

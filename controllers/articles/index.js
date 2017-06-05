@@ -3,11 +3,12 @@ const express = require('express');
 const router = express.Router();
 
 const controller = require('./controller');
+const catController = require('../categories/controller');
 const views = require('./viewController');
 
 
 // VIEW special routes
-router.get('/new', controller.getAllAccounts, controller.getAllCategories, views.formNew);
+router.get('/new', controller.getAllAccounts, catController.index, views.formNew);
 router.get('/:id/edit', controller.getAllAccounts, controller.getOneArticle, views.formEdit);
 
 //  VIEW (get) a collection of articles

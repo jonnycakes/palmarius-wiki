@@ -5,4 +5,10 @@ module.exports = {
     });
   },
 
+  showOne(req, res) {
+    res.render('category-show', {
+      articles: res.locals.categories,
+    });
+  },
+
 };
