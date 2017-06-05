@@ -53,8 +53,9 @@ i.icon-red {
   position: fixed;
   width: 100%;
   height: 60px;
-  bottom: 60px;
+  bottom: 45px;
   background-color: #FFF;
+  z-index: 100;
 }
 
 .userView {
@@ -72,6 +73,10 @@ nav {
 
 form {
   margin-bottom: 150px;
+}
+
+code {
+  background-color: #ddd;
 }
 
 @media (min-width: 992px) {
