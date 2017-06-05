@@ -52,7 +52,7 @@
           <p> See below for a history of updates.</p>
             <div class="collection">
               <% updates.forEach( update => { %>
-                <a href="/<%=update.article_id %>" class="collection-item red-text text-lighten-2"><span class="new badge red lighten-2" data-badge-caption=""><%= update.desc %></span><span class="new badge red lighten-2" data-badge-caption=""><%= update.first_name %> <%= update.last_name %></span><span class="new badge red lighten-2" data-badge-caption=""><%= moment(update.updated_at).format('MMMM Do YYYY, h:mm a') %></span><%= update.subject %></a>
+                <a href="/<%=update.article_id %>" class="collection-item red-text text-lighten-2"><span class="new badge red lighten-2" data-badge-caption=""><%= update.desc %></span><span class="new badge red lighten-2" data-badge-caption=""><%= update.first_name %> <%= update.last_name %></span><span class="new badge red lighten-2" data-badge-caption=""><%= moment.utc(update.updated_at).local().format('MMMM Do YYYY, h:mm a') %></span><%= update.subject %></a>
               <% }) %>
             </div>
         </div>

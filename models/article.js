@@ -3,7 +3,7 @@ const db = require('../config/db.js');
 module.exports = {
   findAll() {
     return db.many(`
-      SELECT articles.id AS id, articles.subject AS subject, articles.created_at AS created_at, accounts.first_name AS first_name, accounts.last_name AS last_name, cat.description
+      SELECT articles.id AS id, articles.subject AS subject, articles.created_at AS created_at, accounts.first_name AS first_name, accounts.last_name AS last_name, cat.description, articles.category_id as category_id
       FROM articles
       INNER JOIN accounts ON (articles.author_id = accounts.id)
       INNER JOIN categories cat ON (articles.category_id = cat.id)

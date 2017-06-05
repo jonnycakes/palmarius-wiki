@@ -9,7 +9,7 @@ const views = require('./viewController');
 
 // VIEW special routes
 router.get('/new', controller.getAllAccounts, catController.index, views.formNew);
-router.get('/:id/edit', controller.getAllAccounts, controller.getOneArticle, views.formEdit);
+router.get('/:id/edit', controller.getAllAccounts, catController.index, controller.getOneArticle, views.formEdit);
 
 //  VIEW (get) a collection of articles
 router.get('/', controller.index, views.showAll);

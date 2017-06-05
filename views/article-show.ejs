@@ -41,7 +41,7 @@
         <a href="#" data-activates="slide-out" class="button-collapse"><i class="large material-icons icon-red lighten-5">menu</i></a>
       </span>
         <h1> <%= article.subject %></h1>
-        <p> Originally published on <%= moment(article.created_at).format('MMMM Do YYYY, h:mm a') %> by <%= article.first_name %> <%= article.last_name %>. </p>
+        <p> Originally published on <%= moment.utc(article.created_at).local().format('MMMM Do YYYY, h:mm a') %> by <%= article.first_name %> <%= article.last_name %>. </p>
 
     </header>
 

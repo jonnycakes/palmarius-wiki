@@ -15,7 +15,7 @@
       </ul>
       <ul class="foot">
           <form method="POST" action="/<%= article.id %>?_method=delete">
-            <button class="btn-floating btn-large waves-effect waves-light red margin-top-20" style="margin-left:10px;"><i class="material-icons">delete</i></button>
+            <button id="delete-button" class="btn-floating btn-large waves-effect waves-light red margin-top-20" style="margin-left:10px;"><i class="material-icons">delete</i></button>
           </form>
         </li>
 
@@ -67,6 +67,21 @@
                       <option value="<%= editor.id %>"> <%= editor.first_name %> <%= editor.nickname %> <%= editor.last_name %> </option>
                     <% }) %>
                   </select>
+
+
+                  <br/>
+                  <label for="article[category_id]">Category:</label>
+                  <select name="article[category_id]">
+                    <% categories.forEach( category => { %>
+                      <% if (category.id === article.category_id) { %>
+                        <option value="<%= category.id %>" SELECTED> <%= category.description %> </option>
+                      <% } else {  %>
+                        <option value="<%= category.id %>"> <%= category.description %> </option>
+                        <% } %>
+                    <% }); %>
+                  </select>
+
+
                   <br/>
                   <button type="submit" class="waves-effect waves-light btn green lighten-1">Edit Article</button>
             </form>
