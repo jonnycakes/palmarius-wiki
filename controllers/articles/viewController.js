@@ -1,16 +1,31 @@
 module.exports = {
   showAll(req, res) {
-    res.render('articles-index', {
-      articles: res.locals.articles,
+    res.format({
+      json() {
+        res.json(res.locals.articles);
+      },
+      html() {
+        res.render('articles-index', {
+          articles: res.locals.articles,
+        })
+      },
     });
   },
 
   showOne(req, res) {
-    res.render('article-show', {
-      article: res.locals.article,
-      editors: res.locals.editors,
+    res.format({
+      json() {
+        res.json([res.locals.article, res.locals.editors]);
+      },
+      html() {
+        res.render('article-show', {
+          article: res.locals.article,
+          editors: res.locals.editors,
+        })
+      },
     });
   },
+
 
   formNew(req, res) {
     res.render('article-create', {
@@ -35,9 +50,16 @@ module.exports = {
   },
 
   showUpdateHistory(req, res) {
-    res.render('update-history', {
-      updates: res.locals.updates,
-    })
+    res.format({
+      json() {
+        res.json([res.locals.updates]);
+      },
+      html() {
+        res.render('update-history', {
+          updates: res.locals.updates,
+        })
+      },
+    });
   }
 
 };
