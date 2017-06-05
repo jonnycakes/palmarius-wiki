@@ -6,7 +6,7 @@ A knowledge center for all things our cohort. Following wiki.app criteria on [th
 
 ----
 ## Entity Relationship Diagram
-![ERD](./assets/erd-final.png)
+![ERD](./assets/erd-final-revised.png)
 
 **Notes on ERD**
 - I'm planning my database schema ahead to include authors, categories, and tags in advance.

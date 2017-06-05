@@ -51,7 +51,7 @@
 
         <div id="main-content">
           <h3> Welcome to the wiki!</h3>
-          <p> This is the CRUD wiki appliciation for Palamarius student notes. Below, you'll find a list of articles. To add a new article, click the "new" button. For questions, ask someone else</p>
+          <p> This is the CRUD wiki appliciation for Palamarius student notes. Below, you'll find a list of articles. To add a new article, click the "new" button. For questions, ask someone else!</p>
             <div class="collection ">
               <% articles.forEach( article => { %>
                 <a href="/<%=article.id %>" class="collection-item red-text text-lighten-2"><span class="new badge red lighten-2" data-badge-caption=""><%= article.description %></span><span class="new badge red lighten-2" data-badge-caption=""><%= article.first_name %> <%= article.last_name %> - <%= moment(article.created_at).format('MMMM Do YYYY') %></span><%= article.subject %></a>
