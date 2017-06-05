@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <%- include ./partials/head.ejs %>
+  </head>
+  <body>
+
+    <!-- Start side-nav -->
+    <div id="slide-out" class="side-nav fixed">
+      <ul>
+        <%- include ./partials/logo.ejs %>
+
+
+        <li><a href="/articles/update-history" class="waves-effect waves-light btn blue lighten-1">Update History</a></li>
+
+      </ul>
+      <ul class="foot">
+        <li><a href="/new" class="waves-effect waves-light btn green lighten-1">New Article</a></li>
+              </ul>
+    </div>
+    <!-- End side-nav -->
+
+    <header class="z-depth-1">
+
+      <!-- breadcrumb -->
+      <nav>
+        <div class="nav-wrapper">
+          <div class="col s12">
+            <a href="/" class="breadcrumb">Home</a>
+            <a href="/" class="breadcrumb">Articles</a>
+            <a class="breadcrumb">Update History</a>
+          </div>
+        </div>
+      </nav>
+      <!-- End breadcrumb -->
+
+      <span class="hamburger-menu">
+        <a href="#" data-activates="slide-out" class="button-collapse"><i class="large material-icons icon-red lighten-5">menu</i></a>
+      </span>
+        <h3> Update History</h3>
+
+    </header>
+
+
+
+      <div id="content-wrapper">
+
+
+
+        <div id="main-content">
+
+          <p> See below for a history of updates.</p>
+            <div class="collection">
+              <% updates.forEach( update => { %>
+                <a href="/<%=update.article_id %>" class="collection-item red-text text-lighten-2"><span class="new badge red lighten-2" data-badge-caption=""><%= update.desc %></span><span class="new badge red lighten-2" data-badge-caption=""><%= update.first_name %> <%= update.last_name %></span><span class="new badge red lighten-2" data-badge-caption=""><%= moment(update.updated_at).format('MMMM Do YYYY, h:mm a') %></span><%= update.subject %></a>
+              <% }) %>
+            </div>
+        </div>
+      </div>
+
+
+
+
+
+  </body>
+</html>

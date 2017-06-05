@@ -25,5 +25,7 @@ router.put(('/:id(\\d+)/'), controller.update, controller.createArticleEditor, v
 // DESTROY (delete) an /article/:id
 router.delete(('/:id(\\d+)/'), controller.destroyArticleEdits, controller.destroyArticle, views.destroyRedirect);
 
+// VIEW update-history
+router.get('/update-history', controller.getUpdateHistory, views.showUpdateHistory);
 
 module.exports = router;

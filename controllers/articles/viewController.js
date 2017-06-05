@@ -34,4 +34,10 @@ module.exports = {
     res.redirect('/');
   },
 
+  showUpdateHistory(req, res) {
+    res.render('update-history', {
+      updates: res.locals.updates,
+    })
+  }
+
 };

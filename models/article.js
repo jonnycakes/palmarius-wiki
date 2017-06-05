@@ -121,10 +121,11 @@ module.exports = {
 
   findAllUpdates() {
     return db.any(`
-      SELECT *
-      FROM articles art
-      LEFT OUTER JOIN article_contributors j_table ON (art.id = j_table.article_id)
+      SELECT art.id as article_id, art.author_id as author_id, art.subject as subject, j_table.updated_at as updated_at, acc.first_name as first_name, acc.last_name as last_name, acc.nickname as nickname, cat.description as desc
+      FROM article_contributors j_table
+      LEFT OUTER JOIN articles art ON (j_table.article_id = art.id)
       LEFT OUTER JOIN accounts acc ON (j_table.contributor_id = acc.id)
+      LEFT OUTER JOIN categories cat ON (art.category_id = cat.id)
       ORDER BY j_table.updated_at DESC
       `)
   }

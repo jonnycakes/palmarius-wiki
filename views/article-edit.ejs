@@ -1,33 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-      <title></title>
-
-      <!-- Materialize CSS -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="/vendor/materialize/css/materialize.min.css" />
-
-      <!-- Application Styles -->
-      <link rel="stylesheet" href="/css/style.css" />
-
-      <!-- jQuery -->
-      <script src="/vendor/jquery/jquery.min.js"></script>
-
-      <!-- Materialize JS -->
-      <script src="/vendor/materialize/js/materialize.min.js"></script>
-
-      <!-- Application JS -->
-      <script src="/js/app.js"></script>
+    <%- include ./partials/head.ejs %>
   </head>
   <body>
 
     <!-- Start side-nav -->
     <div id="slide-out" class="side-nav fixed">
       <ul>
-        <li>
-          <img src="/img/ga-logo.jpg" width="150px">
-        </li>
+        <%- include ./partials/logo.ejs %>
+
+        <li><a href="/<%= article.id %>" class="waves-effect waves-light btn blue lighten-1">Cancel Edit</a></li>
 
       </ul>
       <ul class="foot">
@@ -68,8 +51,10 @@
       <div id="content-wrapper" class="container">
         <div id="main-content input-field">
             <form class="col s12" method="POST" action="/<%= article.id %>?_method=put">
+              <div class="input-field col s12">
+                <input id="article[subject]" name="article[subject]" type="text" class="validate" value="<%= article.subject %>">
                 <label for="article[subject]">Subject:</label>
-                  <input id="article[subject]" name="article[subject]" type="text" class="validate" value="<%= article.subject %>">
+              </div>
                   <br/>
                   <div class="input-field col s12">
                     <textarea id="article[body]" name="article[body]" class="materialize-textarea" ><%= article.body %></textarea>
@@ -82,12 +67,8 @@
                       <option value="<%= editor.id %>"> <%= editor.first_name %> <%= editor.nickname %> <%= editor.last_name %> </option>
                     <% }) %>
                   </select>
-
                   <br/>
-
-
                   <button type="submit" class="waves-effect waves-light btn green lighten-1">Edit Article</button>
-
             </form>
         </div>
       </div>

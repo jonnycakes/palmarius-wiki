@@ -1,35 +1,15 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="utf-8">
-      <title></title>
-
-      <!-- Materialize CSS -->
-      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-      <link rel="stylesheet" href="/vendor/materialize/css/materialize.min.css" />
-
-      <!-- Application Styles -->
-      <link rel="stylesheet" href="/css/style.css" />
-
-      <!-- jQuery -->
-      <script src="/vendor/jquery/jquery.min.js"></script>
-
-      <!-- Materialize JS -->
-      <script src="/vendor/materialize/js/materialize.min.js"></script>
-
-      <!-- Application JS -->
-      <script src="/js/app.js"></script>
+    <%- include ./partials/head.ejs %>
   </head>
   <body>
 
     <!-- Start side-nav -->
     <div id="slide-out" class="side-nav fixed">
-      <ul>
-        <li>
-          <img src="/img/ga-logo.jpg" width="150px">
-        </li>
+      <ul class="side-nav-links">
+        <%- include ./partials/logo.ejs %>
 
-        <li><div class="divider"></div></li>
         <li><a class="subheader">Editors</a></li>
           <% editors.forEach( editor => { %>
             <li><a><%= editor.first_name %> <%= editor.last_name %> - <%= moment(editor.updated_at).isValid() ? moment(editor.updated_at).format('MMM Do, h:mm a') : "No Edits" %></a></li>
@@ -44,7 +24,7 @@
     <!-- End side-nav -->
 
     <header class="z-depth-1">
-      <!-- navigation -->
+      <!-- breadcrumb -->
               <nav>
                <div class="nav-wrapper">
                  <div class="col s12">
@@ -54,7 +34,7 @@
                  </div>
                </div>
              </nav>
-      <!-- End navigation -->
+      <!-- End breadcrumb -->
 
 
       <span class="hamburger-menu">
@@ -68,12 +48,8 @@
 
 
       <div id="content-wrapper">
-
-
-
         <div id="main-content">
-
-          <p> <%- marked(article.body) %> </p>
+           <%- marked(article.body) %>
         </div>
       </div>
 

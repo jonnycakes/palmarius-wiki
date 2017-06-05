@@ -104,6 +104,14 @@ module.exports = {
       next();
     })
     .catch(err => next(err));
-  }
+  },
 
+  getUpdateHistory(req, res, next) {
+    Articles.findAllUpdates()
+      .then((updates) => {
+        res.locals.updates = updates;
+        next();
+      })
+      .catch(err => next(err));
+    },
 };
