@@ -19,6 +19,7 @@ const dir = {
   public: path.join(__dirname, 'public'),
   jquery: path.join(__dirname, 'node_modules/jquery/dist'),
   materialize: path.join(__dirname, 'node_modules/materialize-css/dist'),
+  // highlight: path.join(__dirname, 'node_modules/)
 };
 
 // set up static middleware for public folders
